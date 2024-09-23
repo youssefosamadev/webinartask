@@ -1,14 +1,15 @@
 import React from "react";
 import Image1 from "../../../public/imgs/HeroImg.png";
+import Imagemobail from "../../../public/imgs/heroimgmobail.png";
 import Image from "next/image";
 
 const HeroPage = () => {
   return (
     <div>
-      <h2 className="text-center text-3xl m-7 font-bold text-[#181613] max-md:text-lg">
+      <h2 className="text-center text-4xl m-7 font-bold text-[#181613] max-md:text-lg">
         All-in-One Solution for <br></br> Effortless Webinar Hosting
       </h2>
-      <p className=" text-center text-[#181613] m-2">
+      <p className=" text-center text-[#181613] m-2 text-lg sm:text-xl lg:text-2xl">
         Create immersive live Webinar experiences with everything you need. Join
         industry experts for a <br></br> transformative learning experience and
         gain the audience you need.
@@ -21,8 +22,17 @@ const HeroPage = () => {
           Contact Us
         </button>
       </div>
-      <div className="flex justify-center content-center">
-        <Image src={Image1} />
+      <div className="flex justify-center items-center">
+        <Image
+          src={Image1}
+          className="hidden sm:block    "
+        />
+      </div>
+      <div className="flex justify-center items-center">
+        <Image
+          src={Imagemobail}
+          className="block sm:hidden w-full max-w-xs"
+        />
       </div>
     </div>
   );
