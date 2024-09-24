@@ -1,65 +1,131 @@
 "use client";
 import { useState } from "react";
+import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 
-type FAQ = {
-  question: string;
-  answer: string;
-};
+const Accordion = () => {
+  const [activeIndex, setActiveIndex] = useState(null);
 
-const faqs: FAQ[] = [
-  {
-    question: "How many participants can I host in a webinar?",
-    answer:
-      "V.connect supports up to 5000 participants, offering scalability for events of any size.",
-  },
-  {
-    question: "Can I live stream my webinars?",
-    answer:
-      "Absolutely! Enjoy the benefits of reaching a wider audience in real-time.",
-  },
-  {
-    question: "How long can a webinar last?",
-    answer:
-      "Webinars can extend up to 30 hours, providing flexibility for various event durations.",
-  },
-  {
-    question: "Are email notifications automated?",
-    answer:
-      "Yes, V.connect sends automated emails for registration, start, and end times.",
-  },
-];
-
-export default function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+  const toggleAccordion = (index) => {
+    setActiveIndex(index === activeIndex ? null : index);
   };
 
   return (
-    <section className="container mx-auto px-5">
-      <h1 className="text-3xl font-bold text-center my-8">FAQs</h1>
-      {faqs.map((faq, index) => (
-        <div key={index} className="border-b border-gray-300">
-          <div
-            className="flex justify-between items-center py-4 cursor-pointer"
-            onClick={() => toggleFAQ(index)}
+    <div className="accordion w-4/5 mx-auto my-10">
+      <div className="accordion-item border-b border-gray-300">
+        <h2 className="accordion-header">
+          <button
+            onClick={() => toggleAccordion(1)}
+            className="flex justify-between items-center w-full text-left px-4 py-3 text-lg font-medium focus:outline-none"
           >
-            <h3 className="text-lg font-semibold">{faq.question}</h3>
-            <span className="text-yellow-500">
-              {openIndex === index ? "▲" : "▼"}
-            </span>
-          </div>
-          <div
-            className={`transition-max-height duration-500 ease-in-out ${
-              openIndex === index ? "max-h-screen" : "max-h-0 overflow-hidden"
-            }`}
-          >
-            <p className="text-gray-600 mb-4">{faq.answer}</p>
+            How many participants can I host in a webinar?
+            {activeIndex === 1 ? (
+              <ChevronUpIcon className="h-5 w-5" style={{ color: "#F8B517" }} />
+            ) : (
+              <ChevronDownIcon
+                className="h-5 w-5"
+                style={{ color: "#F8B517" }}
+              />
+            )}
+          </button>
+        </h2>
+        <div
+          className={`accordion-collapse overflow-hidden transition-all duration-300 ${
+            activeIndex === 1 ? "max-h-screen" : "max-h-0"
+          }`}
+        >
+          <div className="accordion-body px-4 py-3 text-gray-700">
+            <strong>V.connct supports up to 5000 participants, offering scalability for events of any size.</strong>
           </div>
         </div>
-      ))}
-      
-    </section>
+      </div>
+
+      {/* Accordion Item #2 */}
+      <div className="accordion-item border-b border-gray-300">
+        <h2 className="accordion-header">
+          <button
+            onClick={() => toggleAccordion(2)}
+            className="flex justify-between items-center w-full text-left px-4 py-3 text-lg font-medium focus:outline-none"
+          >
+            Can I live stream my webinars?
+            {activeIndex === 2 ? (
+              <ChevronUpIcon className="h-5 w-5" style={{ color: "#F8B517" }} />
+            ) : (
+              <ChevronDownIcon
+                className="h-5 w-5"
+                style={{ color: "#F8B517" }}
+              />
+            )}
+          </button>
+        </h2>
+        <div
+          className={`accordion-collapse overflow-hidden transition-all duration-300 ${
+            activeIndex === 2 ? "max-h-screen" : "max-h-0"
+          }`}
+        >
+          <div className="accordion-body px-4 py-3 text-gray-700">
+            <strong>Absolutely! Enjoy the benefits of reaching a wider audience in real-time.</strong>
+          </div>
+        </div>
+      </div>
+
+      <div className="accordion-item border-b border-gray-300">
+        <h2 className="accordion-header">
+          <button
+            onClick={() => toggleAccordion(4)}
+            className="flex justify-between items-center w-full text-left px-4 py-3 text-lg font-medium focus:outline-none"
+          >
+            Are email notifications automated?
+            {activeIndex === 4 ? (
+              <ChevronUpIcon className="h-5 w-5" style={{ color: "#F8B517" }} />
+            ) : (
+              <ChevronDownIcon
+                className="h-5 w-5"
+                style={{ color: "#F8B517" }}
+              />
+            )}
+          </button>
+        </h2>
+        <div
+          className={`accordion-collapse overflow-hidden transition-all duration-300 ${
+            activeIndex === 4 ? "max-h-screen" : "max-h-0"
+          }`}
+        >
+          <div className="accordion-body px-4 py-3 text-gray-700">
+            <strong>Yes, V.connct sends automated emails for registration, start, and end times.</strong>
+          </div>
+        </div>
+      </div>
+
+      {/* Accordion Item #3 */}
+      <div className="accordion-item border-b border-gray-300">
+        <h2 className="accordion-header">
+          <button
+            onClick={() => toggleAccordion(3)}
+            className="flex justify-between items-center w-full text-left px-4 py-3 text-lg font-medium focus:outline-none"
+          >
+            How long can a webinar last?
+            {activeIndex === 3 ? (
+              <ChevronUpIcon className="h-5 w-5" style={{ color: "#F8B517" }} />
+            ) : (
+              <ChevronDownIcon
+                className="h-5 w-5"
+                style={{ color: "#F8B517" }}
+              />
+            )}
+          </button>
+        </h2>
+        <div
+          className={`accordion-collapse overflow-hidden transition-all duration-300 ${
+            activeIndex === 3 ? "max-h-screen" : "max-h-0"
+          }`}
+        >
+          <div className="accordion-body px-4 py-3 text-gray-700">
+            <strong>Webinars can extend up to 30 hours, providing flexibility for various event durations.</strong>
+          </div>
+        </div>
+      </div>
+    </div>
   );
-}
+};
+
+export default Accordion;

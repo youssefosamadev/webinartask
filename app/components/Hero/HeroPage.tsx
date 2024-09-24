@@ -1,12 +1,12 @@
 import React from "react";
 import Image1 from "../../../public/imgs/HeroImg.png";
-import Imagemobail from "../../../public/imgs/heroimgmobail.png";
+import Imagemobail from "../../../public/imgs/hero section one web.svg";
 import Image from "next/image";
 
 const HeroPage = () => {
   return (
     <div>
-      <h2 className="text-center text-4xl m-7 font-bold text-[#181613] max-md:text-lg">
+      <h2 className="text-center font-bold text-4xl m-7  text-[#181613] max-md:text-xl">
         All-in-One Solution for <br></br> Effortless Webinar Hosting
       </h2>
       <p className=" text-center text-[#181613] m-2 text-lg sm:text-xl lg:text-2xl">
@@ -23,16 +23,10 @@ const HeroPage = () => {
         </button>
       </div>
       <div className="flex justify-center items-center">
-        <Image
-          src={Image1}
-          className="hidden sm:block    "
-        />
+        <Image src={Image1} className="hidden sm:block    " />
       </div>
       <div className="flex justify-center items-center">
-        <Image
-          src={Imagemobail}
-          className="block sm:hidden w-full max-w-xs"
-        />
+        <Image src={Imagemobail} className="block sm:hidden w-full max-w-xs" />
       </div>
     </div>
   );
